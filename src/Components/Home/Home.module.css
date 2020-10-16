@@ -1,0 +1,117 @@
+.top{
+  background-color: #FBD062;
+     justify-content: center ;
+     border-bottom-right-radius:50%;
+}
+.box{
+     position: relative;
+     display: flex;
+     flex-flow: row nowrap;
+
+ }
+ .mainimg{
+   /* float: right; */
+   position: relative;
+ }
+
+.box h1{
+     color: #111430;
+     text-transform: capitalize;
+     text-align: left;
+     width: 300px;
+
+ }
+
+ .box .text{
+        padding-left: 10px;
+        /* float: left; */
+        color: black;
+         position:relative;
+         z-index: 999;
+         margin: 0 auto;
+         padding: 50px;
+         left: 0;
+         right: 0;
+         top: 40%; /* Adjust this value to move the positioned div up and down */
+         text-align: left;
+         width: 80%; /* Set the width of the positioned div */
+         font-weight: 500;
+        display: inline-block;
+        font-family: 'Poppins', sans-serif;
+     }
+
+.btnA{
+    color: white;
+    background-color: #111430;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 20px;
+    width : 100px;
+    text-align: center;
+}
+.link{
+  padding-right:30px;
+  text-decoration:none;
+  color:black;
+  font-family: 'Poppins', sans-serif;
+}
+.link:hover{
+  border-bottom:3px solid rgb(59, 59, 121);
+  padding:10px;
+  text-align: center;
+  margin-right: 10px;
+}
+.second{
+  background_color: white;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 100px;
+  text-align: center;
+  padding-bottom: 100px;
+}
+.third{
+  background-color:rgb(35, 35, 77);
+  padding: 100px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+
+}
+
+.fourth{
+  background_color: white;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 100px;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+
+.forms{
+  padding-left: 10px;
+  /* float: left; */
+  color: black;
+   position:relative;
+   margin: 0 auto;
+   padding: 50px;
+   left: 0;
+   right: 0;
+   top: 40%; /* Adjust this value to move the positioned div up and down */
+   text-align: left;
+   width: 80%; /* Set the width of the positioned div */
+   font-weight: 500;
+  display: inline-block;
+
+}
+
+.form_button{
+  color: white;
+  background-color: #111430;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 10px;
+  display: inline-block;
+  width : 80px;
+  text-align: center;
+  margin-top: 10px;
+}
