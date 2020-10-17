@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import styles from './Admin.module.css'; 
 import { Button, TextField } from '@material-ui/core';
-import styles from './Admin.module.css';
+import { UserContext } from '../../App';
+import { useContext } from 'react';
+import AddServiceList from '../AddServiceList/AddServiceList';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -54,19 +57,31 @@ function TabPanel(props) {
     },
   }));
   
+  
 
 const Admin = () => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    const [loggedInUser, setLoggedInUser ] = useContext(UserContext);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const [addService,setAddService] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/addService')
+        .then(res => res.json())
+        .then(data =>{
+          setAddService(data);
+        })
+    
+      },[]);
     return (
         <div>
             <div style={{display:"flex",flexDirection:"row"}}>
                 <Link to='/home'> <img className={styles.header} style={{height:'40%', width:'30%'}} src={require('../../resources/images/logos/logo.png')} alt="Logo" /></Link>
-                <h4 className={styles.header} style={{marginLeft:'500px'}}>Admin</h4>
+                <h4 className={styles.header} style={{marginLeft:'500px'}}>{loggedInUser.name}</h4>
+                <br/>
             </div>
             <div className={classes.root}>
             <Tabs
@@ -77,53 +92,57 @@ const Admin = () => {
                 aria-label="Vertical tabs example"
                 className={classes.tabs}
             >
-                <Tab label="Service List" {...a11yProps(0)} />
-                <Tab label="Add Service" {...a11yProps(1)} />
+                <Tab label="Add Service" {...a11yProps(0)} />
+                <Tab label="Service List" {...a11yProps(1)} />
                 <Tab label="Add Admin" {...a11yProps(2)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-                Service List
+            <form action="http://localhost:5000/addService" method="post" noValidate autoComplete="off">
+                <TextField
+                    id="name"
+                    label="name"
+                    variant="outlined"
+                    color="secondary"
+                    name='name'
+                /><br></br><br></br>
+                    <TextField
+                    id="description"
+                    label="description"
+                    variant="outlined"
+                    color="secondary"
+                    name='description'
+                /><br></br><br></br>
+                <input type="file" id="image" name="image" accept="image/*"></input><br></br><br></br>
+                <Button type="submit" variant="contained" color="secondary">
+                    Submit
+                  </Button>
+                </form>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <form>
-                    <TextField
-                        id="Service Name"
-                        label="Service Name"
-                        variant="outlined"
-                        color="secondary"
-                        value=''
-                    /><br></br><br></br>
-                        <TextField
-                        id="Description"
-                        label="Description"
-                        variant="outlined"
-                        color="secondary"
-                        value=''
-                    /><br></br><br></br>
-                    <input type="file" id="img" name="img" accept="image/*"></input><br></br><br></br>
-                    <Button variant="contained" color="secondary">
-                        Add
-                        </Button>
-                    </form>
+                <div>
+                  {
+                    addService.map(service => <AddServiceList service={service}></AddServiceList>)
+                  }
+                </div>
             </TabPanel>
             <TabPanel value={value} index={2}>
             <form>
                 <TextField
-                    id="Name"
-                    label="Name"
+                    id="name"
+                    name="name"
+                    label="name"
                     variant="outlined"
                     color="secondary"
-                    value=''
                 /><br></br><br></br>
                     <TextField
-                    id="Email"
-                    label="Email"
+                    id="email"
+                    name="email"
+                    label="email"
                     variant="outlined"
                     color="secondary"
-                    value=''
                 /><br></br><br></br>
-                <Button variant="contained" color="secondary">
-                    Add
+                <Button type="submit" variant="contained" color="secondary">
+                    Submit
                     </Button>
                 </form>
             </TabPanel>

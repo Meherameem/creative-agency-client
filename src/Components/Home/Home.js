@@ -18,6 +18,15 @@ const Home = () => {
     })
 
   },[]);
+  const [services,setServices] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/addService')
+    .then(res => res.json())
+    .then(data =>{
+      setServices(data);
+    })
+
+  },[]);
     return (
       <div>
         <div className={styles.top}>
@@ -59,7 +68,9 @@ const Home = () => {
           <h3>Provide Awesome <span style={{color: 'green'}}>Services</span></h3>
           <div style={{marginLeft:'30px'}}>
             <div style={{display:"flex",flexDirection:"row"}}>
-              <HomeServiceCard></HomeServiceCard>
+              {
+                services.map(service => <HomeServiceCard service={service}></HomeServiceCard>)
+              }
             </div>
           </div>
 
