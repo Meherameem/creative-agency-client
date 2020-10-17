@@ -47,7 +47,7 @@ const Home = () => {
               <h1> Lets grow your brand to the next level</h1>
 
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at leo non ex porta egestas ut in leo. Praesent libero lacus, placerat sed blandit id, gravida id nisl. Integer vitae mattis elit. Aliquam erat volutpat. Donec ac elementum nunc.</p>
-              <a href="#" className={styles.btnA}>Hire Us</a>
+              <a className={styles.btnA}>Hire Us</a>
 
             </div>
             <div className={styles.mainimg}>
@@ -104,7 +104,7 @@ const Home = () => {
 
             </div>
             <div className={styles.forms}>
-              <form noValidate>
+              <form noValidate autoComplete="off">
                 <TextField
 
                   variant="outlined"
@@ -115,7 +115,6 @@ const Home = () => {
                   label="Your Email Address"
                   name="email"
                   autoComplete="email"
-                  autoFocus
                 />
                 <TextField
                   variant="outlined"
@@ -141,7 +140,7 @@ const Home = () => {
                 />
 
 
-                <a className={styles.form_button} href="#" type="submit" >Hire Us</a>
+                <a className={styles.form_button} type="submit" >Hire Us</a>
 
               </form>
 
