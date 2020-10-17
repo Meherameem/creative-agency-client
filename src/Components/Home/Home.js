@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 const Home = () => {
   const [reviews,setReviews] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/reviews')
+    fetch('https://safe-river-56839.herokuapp.com/reviews')
     .then(res => res.json())
     .then(data =>{
       setReviews(data);
@@ -20,7 +20,7 @@ const Home = () => {
   },[]);
   const [services,setServices] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/addService')
+    fetch('https://safe-river-56839.herokuapp.com/addService')
     .then(res => res.json())
     .then(data =>{
       setServices(data);
@@ -39,6 +39,7 @@ const Home = () => {
               <Link to='/team' className={styles.link}>Our Team</Link>
               <Link to='/contact' className={styles.link}>Contact Us</Link>
               <Link to='/logSign' className={styles.link}>Log In</Link>
+              <Link to='/admin' className={styles.link}>Admin</Link>
             </div>
           </div>
           <div className={styles.box}>

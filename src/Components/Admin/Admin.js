@@ -69,7 +69,7 @@ const Admin = () => {
     };
     const [addService,setAddService] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/addService')
+        fetch('https://safe-river-56839.herokuapp.com/addService')
         .then(res => res.json())
         .then(data =>{
           setAddService(data);
@@ -97,7 +97,7 @@ const Admin = () => {
                 <Tab label="Add Admin" {...a11yProps(2)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-            <form action="http://localhost:5000/addService" method="post" noValidate autoComplete="off">
+            <form action="https://safe-river-56839.herokuapp.com/addService" method="post" noValidate autoComplete="off">
                 <TextField
                     id="name"
                     label="name"

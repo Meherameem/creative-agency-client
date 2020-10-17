@@ -69,7 +69,7 @@ const SpecificUser = () => {
     };
     const [userServices,setUserServices] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/userServices')
+    fetch('https://safe-river-56839.herokuapp.com/userServices')
     .then(res => res.json())
     .then(data =>{
       setUserServices(data);
@@ -97,7 +97,7 @@ const SpecificUser = () => {
                 <Tab label="Review" {...a11yProps(2)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-            <form  action="http://localhost:5000/userServices" method="post" noValidate autoComplete="off">
+            <form  action="https://safe-river-56839.herokuapp.com/userServices" method="post" noValidate autoComplete="off">
                 <TextField
                     id="Your Name/Company"
                     label="Your Name/Company"
@@ -147,7 +147,7 @@ const SpecificUser = () => {
                 </div>
             </TabPanel>
             <TabPanel value={value} index={2}>
-            <form  action="http://localhost:5000/reviews" method="post" noValidate autoComplete="off">
+            <form  action="https://safe-river-56839.herokuapp.com/reviews" method="post" noValidate autoComplete="off">
                 <TextField
                     id="Your Name"
                     name="name"
